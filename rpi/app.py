@@ -1,11 +1,22 @@
-import time
+from flask import Flask, render_template, jsonify
+
+from boundary.car_controller import CarController
 from car.car import Car
 
-if __name__ == '__main__':
-    car = Car(17, 18, 22, 23, 5, 6, 12, 13, 1920, 1080, 270)
+app = Flask(__name__)
 
-    for i in range(5):
-        car.move_forward()
-        car.stop()
-        car.take_picture('img_' + str(i) + '.png')
-        time.sleep(1)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+
+@app.route("/status", methods=['GET'])
+def status():
+    return jsonify(status="STOPPED")
+
+
+if __name__ == '__main__':
+    # carController = CarController(car=Car(17, 18, 22, 23, 5, 6, 12, 13, 1920, 1080, 270))
+    # carController.run()
+    app.run()
