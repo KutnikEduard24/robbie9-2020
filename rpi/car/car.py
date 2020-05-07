@@ -17,15 +17,18 @@ class Car:
 
     def move_forward(self):
         print('Moving the car forward...')
-        self.status = CarStatus.RUNNING
+        self.status = repr(CarStatus.RUNNING)
+        #print("Status is", self.status)
         self._motor1.move_forward()
         self._motor2.move_forward()
         self._motor3.move_forward()
         self._motor4.move_forward()
+        return self.status
 
     def move_backward(self):
         print('Moving the car backward...')
-        self.status = CarStatus.RUNNING
+        self.status = repr(CarStatus.RUNNING)
+        #print("Status is", self.status)
         self._motor1.move_backward()
         self._motor2.move_backward()
         self._motor3.move_backward()
@@ -33,7 +36,8 @@ class Car:
 
     def stop(self):
         print('Stopping the car...')
-        self.status = CarStatus.STOPPED
+        self.status = repr(CarStatus.STOPPED)
+        #print("Status is", self.status)
         self._motor1.stop()
         self._motor2.stop()
         self._motor3.stop()

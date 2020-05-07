@@ -1,5 +1,4 @@
 // Get the status of Robbie9
 GET http://localhost:5000/status
 Accept: application/json
-
 ###
