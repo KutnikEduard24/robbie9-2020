@@ -1,10 +1,18 @@
 import time
+
+from flask import Flask, jsonify
+
 from car.car import Car
 
 
 class CarController:
-    def __init__(self, car: Car):
+    def __init__(self, car: Car, flask_app: Flask):
         self._car = car
+        self._flaskApp = flask_app
+        self._flaskApp.route("/status", methods=['GET'])(self.status)
+
+    def status(self):
+        return jsonify(status=str(self._car.status.name))
 
     def run(self):
         for i in range(5):
