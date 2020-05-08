@@ -31,9 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49417592-7309-486c-aecf-4220ffecc6bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpi/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/rpi/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpi/boundary/car_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/rpi/boundary/car_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpi/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/rpi/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,11 +79,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.All in robbie9">
+  <component name="RunManager" selected="Python.app">
     <configuration name="All in robbie9" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/rpi/test/web/robbie9.http">
       <method v="2" />
     </configuration>
     <configuration name="robbie9#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/rpi/test/web/robbie9.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="robbie9-2020-LABS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rpi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rpi/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="car_controller" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -112,6 +132,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app" />
         <item itemvalue="HTTP Request.All in robbie9" />
         <item itemvalue="HTTP Request.robbie9#1" />
         <item itemvalue="Python.car_controller" />
@@ -140,6 +161,7 @@
       <workItem from="1588919985140" duration="637000" />
       <workItem from="1588923644497" duration="837000" />
       <workItem from="1588924650458" duration="1073000" />
+      <workItem from="1588938649672" duration="531000" />
     </task>
     <servers />
   </component>
@@ -156,6 +178,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1588883342342">
@@ -183,5 +206,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/robbie9_2020_LABS$app.coverage" NAME="app Coverage Results" MODIFIED="1588883381723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rpi" />
     <SUITE FILE_PATH="coverage/robbie9_2020_LABS$car_controller.coverage" NAME="car_controller Coverage Results" MODIFIED="1588874281495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rpi/boundary" />
+    <SUITE FILE_PATH="coverage/labs$app.coverage" NAME="app Coverage Results" MODIFIED="1588939386943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rpi" />
   </component>
 </project>
