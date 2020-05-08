@@ -1,0 +1,75 @@
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T112026.500.html
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T112018.500.html
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T085022.500.html
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T074843.404.html
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T062819.200.json
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T061520.200.json
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T043550.500.html
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T043541.500.html
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T043534.500.html
+
+###
+
+GET http://localhost:5000/status
+Accept: application/json
+
+<> 2020-05-07T043451.500.html
+
+###
+
