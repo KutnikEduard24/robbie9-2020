@@ -1,0 +1,96 @@
+Index: rpi/test/web/robbie9.http
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Get the status of Robbie9\r\nGET http://localhost:5000/status\r\nAccept: application/json\r\n\r\n###\r\n\r\n// Run command\r\nPUT http://localhost:5000/run\r\nAccept: application/json\r\n\r\n###
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- rpi/test/web/robbie9.http	(revision 2359ed8009fb9c9314cf25d5ef93ddea85c3d108)
++++ rpi/test/web/robbie9.http	(date 1589309872852)
+@@ -3,9 +3,11 @@
+ Accept: application/json
+ 
+ ###
+-
+ // Run command
+ PUT http://localhost:5000/run
+ Accept: application/json
+ 
+-###
+\ No newline at end of file
++###
++//Stop command
++POST http://localhost:5000/stop
++Accept: application/json
+\ No newline at end of file
+Index: rpi/boundary/car_controller.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import time\r\n\r\nfrom flask import Flask, jsonify\r\n\r\nfrom car.car import Car\r\nfrom service.image_analysis import ImageAnalysisService\r\n\r\n\r\nclass CarController:\r\n    def __init__(self, car: Car, flask_app: Flask, image_analysis_service: ImageAnalysisService):\r\n        self._car = car\r\n        self._flaskApp = flask_app\r\n        self._imageAnalysisService = image_analysis_service\r\n        self._flaskApp.route(\"/status\", methods=['GET'])(self.status)\r\n        self._flaskApp.route(\"/run\", methods=['PUT'])(self.run)\r\n\r\n    def status(self):\r\n        return jsonify(status=str(self._car.status.name))\r\n\r\n    def run(self):\r\n        for i in range(5):\r\n            image_taken = 'img_' + str(i) + '.png'\r\n            self._car.take_picture(image_taken)\r\n            self._imageAnalysisService.upload_image(image_taken)\r\n            self._imageAnalysisService.detect_traffic_light(image_taken)\r\n            self._car.move_forward()\r\n            time.sleep(1)\r\n\r\n        return self.status()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- rpi/boundary/car_controller.py	(revision 2359ed8009fb9c9314cf25d5ef93ddea85c3d108)
++++ rpi/boundary/car_controller.py	(date 1589298705696)
+@@ -3,27 +3,27 @@
+ from flask import Flask, jsonify
+ 
+ from car.car import Car
++from service.car_service import CarService
+ from service.image_analysis import ImageAnalysisService
+ 
+ 
+ class CarController:
+-    def __init__(self, car: Car, flask_app: Flask, image_analysis_service: ImageAnalysisService):
++    def __init__(self, car: Car, car_service: CarService, flask_app: Flask):
+         self._car = car
++        self._carService = car_service
+         self._flaskApp = flask_app
+-        self._imageAnalysisService = image_analysis_service
+         self._flaskApp.route("/status", methods=['GET'])(self.status)
+         self._flaskApp.route("/run", methods=['PUT'])(self.run)
++        self._flaskApp.route("/stop", methods=['POST'])(self.stop)
+ 
+     def status(self):
+         return jsonify(status=str(self._car.status.name))
+ 
+     def run(self):
+-        for i in range(5):
+-            image_taken = 'img_' + str(i) + '.png'
+-            self._car.take_picture(image_taken)
+-            self._imageAnalysisService.upload_image(image_taken)
+-            self._imageAnalysisService.detect_traffic_light(image_taken)
+-            self._car.move_forward()
+-            time.sleep(1)
++        self._carService.run()
++        return self.status()
+ 
++    def stop(self):
++        self._carService.stop()
+         return self.status()
++
+Index: rpi/app.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import Flask, render_template\r\n\r\nfrom boundary.car_controller import CarController\r\nfrom car.car import Car\r\nfrom service.image_analysis import ImageAnalysisService\r\n\r\napp = Flask(__name__)\r\n\r\n\r\n@app.route('/')\r\ndef index():\r\n    return render_template(\"index.html\")\r\n\r\n\r\nif __name__ == '__main__':\r\n    car = Car(17, 18, 22, 23, 5, 6, 12, 13, 1920, 1080, 270)\r\n    imageAnalysisService = ImageAnalysisService()\r\n    carController = CarController(car=car, flask_app=app,image_analysis_service=imageAnalysisService)\r\n    app.run()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- rpi/app.py	(revision 2359ed8009fb9c9314cf25d5ef93ddea85c3d108)
++++ rpi/app.py	(date 1589298423164)
+@@ -2,6 +2,7 @@
+ 
+ from boundary.car_controller import CarController
+ from car.car import Car
++from service.car_service import CarService
+ from service.image_analysis import ImageAnalysisService
+ 
+ app = Flask(__name__)
+@@ -15,5 +16,6 @@
+ if __name__ == '__main__':
+     car = Car(17, 18, 22, 23, 5, 6, 12, 13, 1920, 1080, 270)
+     imageAnalysisService = ImageAnalysisService()
+-    carController = CarController(car=car, flask_app=app,image_analysis_service=imageAnalysisService)
++    carService =CarService(car=car, image_analysis_service=imageAnalysisService)
++    carController = CarController(car=car, car_service=carService, flask_app=app)
+     app.run()

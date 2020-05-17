@@ -1,5 +1,5 @@
 from car.car import Car
-from car.car_thread import CarThread
+from service.car_thread import CarThread
 from service.image_analysis import ImageAnalysisService
 
 
