@@ -1,0 +1,13 @@
+from enum import Enum
+
+
+class CarStatus(Enum):
+    STOPPED = 0
+    RUNNING = 1
+    TAKE_PICTURE = 2
+    UPLOADING_IMAGE = 3
+    IMAGE_UPLOADED = 4
+    ANALYSE_IMAGE = 5
+    TRAFFIC_LIGHT_DETECTED = 6
+    TRAFFIC_LIGHT_NOT_PRESENT = 7
+    MOVE_FORWARD = 8

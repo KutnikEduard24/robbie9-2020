@@ -1,0 +1,17 @@
+// Get the status of Robbie9
+GET http://localhost:5000/status
+Accept: application/json
+
+###
+
+// Run command
+PUT http://localhost:5000/run
+Accept: application/json
+
+###
+
+// Stop command
+POST http://localhost:5000/stop
+Accept: application/json
+
+###
